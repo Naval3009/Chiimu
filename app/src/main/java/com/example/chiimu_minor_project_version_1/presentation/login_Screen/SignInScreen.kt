@@ -93,6 +93,13 @@ fun SignInScreen(
             .padding(start = 30.dp, end = 30.dp),
         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(
+            text = "Login Account", // Add this line for the heading
+            color = Color.Black,
+            fontSize = 40.sp, // Adjust font size as needed
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 40.dp) // Add some padding for spacing
+        )
 
         Text(text = "Enter Your credentials to Login",
             fontWeight = FontWeight.Medium,
