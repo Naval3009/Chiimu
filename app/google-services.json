@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "139871881597",
+    "project_id": "chiimu-minor-project-version-1",
+    "storage_bucket": "chiimu-minor-project-version-1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:139871881597:android:eec3e463acab110b9f6414",
+        "android_client_info": {
+          "package_name": "com.example.chiimu_minor_project_version_1"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "139871881597-bmha945prmdrni3g0olm9ingb68ooco9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.chiimu_minor_project_version_1",
+            "certificate_hash": "69bdd0f8ddc832fc82a17acfc2542ebc520c55ef"
+          }
+        },
+        {
+          "client_id": "139871881597-eam0u46b7h78tksmvj57f1gpksoadk5f.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCoNw76c1uZCJ5cfRg5wBhcPUB6drAQ-xw"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "139871881597-eam0u46b7h78tksmvj57f1gpksoadk5f.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
