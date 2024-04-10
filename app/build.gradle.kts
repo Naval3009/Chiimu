@@ -79,6 +79,7 @@ dependencies {
     kapt(libs.hilt.android.compiler)// kapt("com.google.dagger:hilt-android-compiler:2.49")
     implementation(libs.androidx.hilt.navigation.compose)//  implementation("androidx.hilt:hilt-navigation-compose:1.2.0")
 
+
     //NAVIGATION
     implementation(libs.androidx.lifecycle.viewmodel.compose)//    implementation("androidx.lifecycle:lifecycle-viewmodel-compose:2.7.0")
     implementation(libs.androidx.lifecycle.runtime.compose)//implementation("androidx.lifecycle:lifecycle-runtime-compose:2.7.0")
@@ -87,6 +88,8 @@ dependencies {
     implementation(libs.lottie.compose)
     //pager
     implementation (libs.accompanist.pager)// for making horizontal swipe through pages
+
+
 
 
 }

@@ -14,7 +14,7 @@ import com.example.lottieanimation_splashscreen.SplashScreen
 @Composable
 fun NavigationGraph(context :MainActivity) {
      val navController=  rememberNavController()
-    NavHost(navController = navController, startDestination = "Splash")
+    NavHost(navController = navController, startDestination = "Splash_Screen")
     {
         composable("Splash_Screen"){
             SplashScreen(navController=navController,context= context )//passing the context for the shared preference

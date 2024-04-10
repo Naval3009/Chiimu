@@ -225,7 +225,7 @@ fun IndicatorSingleDot(isSelected: Boolean) {
 }
 
 private fun onBoardingIsFinished(context: MainActivity) {
-    val sharedPreferences = context.getSharedPreferences("onboarding", Context.MODE_PRIVATE)// In this function the name "onboarding" should be same in both be it splash be it onBOarding screeen
+    val sharedPreferences = context.getSharedPreferences("Onboarding_Screen", Context.MODE_PRIVATE)// In this function the name "onboarding" should be same in both be it splash be it onBOarding screeen
     val editor = sharedPreferences.edit()
     editor.putBoolean("isFinished", true)
     editor.apply()
