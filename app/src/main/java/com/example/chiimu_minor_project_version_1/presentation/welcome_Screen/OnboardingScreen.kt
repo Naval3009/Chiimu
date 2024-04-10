@@ -169,7 +169,7 @@ fun ButtonsSection(pagerState: PagerState, navController: NavHostController, con
             OutlinedButton(onClick = {
                 onBoardingIsFinished(context=context)
                 navController.popBackStack()//removing the back stack so that by pressing back it will not jump to the previous pages
-                navController.navigate("Home")/////////////////////////////////////////////////////////////
+                navController.navigate("Sign_In_Screen")///////////////////////  navigating to signInScreen  //////////////////////////////////////
 
             },modifier= Modifier
                 .fillMaxWidth()

@@ -1,8 +1,6 @@
-package com.example.chiimu_minor_project_version_1.presentation.login_Screen
+package com.example.chiimu_minor_project_version_1.presentation.register_Screen
 
 import android.widget.Toast
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -45,47 +43,20 @@ import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import com.example.chiimu_minor_project_version_1.R
 import com.example.chiimu_minor_project_version_1.ui.theme.LightBlue
-import com.example.chiimu_minor_project_version_1.utils.Constant.ServerClient
-import com.google.android.gms.auth.api.signin.GoogleSignIn
-import com.google.android.gms.auth.api.signin.GoogleSignInOptions
-import com.google.android.gms.common.api.ApiException
-import com.google.firebase.auth.GoogleAuthProvider
 import kotlinx.coroutines.launch
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun SignInScreen(
+fun SignUpScreen(
     navController: NavController,
-    viewModel: SignInViewModel = hiltViewModel()
+    viewModel: SignUpViewModel = hiltViewModel()
 ) {
-
-    val googleSignInState = viewModel.googleState.value
-
-    val launcher =
-        rememberLauncherForActivityResult(contract = ActivityResultContracts.StartActivityForResult()) {
-            val account = GoogleSignIn.getSignedInAccountFromIntent(it.data)
-            try {
-                val result = account.getResult(ApiException::class.java)
-                val credentials = GoogleAuthProvider.getCredential(result.idToken, null)
-                viewModel.googleSignIn(credentials)
-            } catch (it: ApiException) {
-                print(it)
-            }
-        }
-
-
-
-
-
-
-
-
     var email by rememberSaveable { mutableStateOf("") }
     var password by rememberSaveable { mutableStateOf("") }
     val scope = rememberCoroutineScope()
     val context = LocalContext.current
-    val state = viewModel.signInState.collectAsState(initial = null)
+    val state = viewModel.signUpState.collectAsState(initial = null)
 
     Column(
         modifier = Modifier
@@ -93,8 +64,15 @@ fun SignInScreen(
             .padding(start = 30.dp, end = 30.dp),
         verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally
     ) {
+        Text(
+            text = "Create Account", // Add this line for the heading
+            color = Color.Black,
+            fontSize = 40.sp, // Adjust font size as needed
+            fontWeight = FontWeight.Bold,
+            modifier = Modifier.padding(bottom = 40.dp) // Add some padding for spacing
+        )
 
-        Text(text = "Enter Your credentials to Login",
+        Text(text = "Enter Your credentials to register",
             fontWeight = FontWeight.Medium,
             fontSize = 15.sp,
             color = Color.Gray,
@@ -148,9 +126,8 @@ fun SignInScreen(
         Button(
             onClick = {
                 scope.launch {
-                    viewModel.loginUser(email, password)
+                    viewModel.registerUser(email, password)
                 }
-
 
             },
             modifier = Modifier
@@ -163,7 +140,7 @@ fun SignInScreen(
             shape = RoundedCornerShape(15.dp)
         ) {
             Text(
-                text = "Sign In",
+                text = "Sign Up",
                 color = Color.White,
                 modifier = Modifier
                     .padding(7.dp)
@@ -178,7 +155,7 @@ fun SignInScreen(
             modifier = Modifier
                 .padding(15.dp)
                 .clickable {
-                    navController.navigate("Sign_Up_Screen")
+                    navController.navigate("Sign_In_Screen")
                 },
             text = "Already Have an account? sign In",
             fontWeight = FontWeight.Bold, color = Color.Black, //fontFamily = RegularFont
@@ -189,15 +166,7 @@ fun SignInScreen(
                 .fillMaxWidth()
                 .padding(top = 10.dp), horizontalArrangement = Arrangement.Center
         ) {
-            IconButton(onClick = {
-                val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
-                    .requestEmail()
-                    .requestIdToken(ServerClient)
-                    .build()
-                val googleSignInClient = GoogleSignIn.getClient(context,gso)
-                launcher.launch(googleSignInClient.signInIntent)
-
-            }) {
+            IconButton(onClick = { /*TODO*/ }) {
                 Icon(
                     modifier = Modifier.size(50.dp),
                     painter = painterResource(id = R.drawable.ic_google),
@@ -219,20 +188,20 @@ fun SignInScreen(
 
         }
     }
-
     LaunchedEffect(key1 = state.value?.isSuccess) {
         scope.launch {
             if (state.value?.isSuccess?.isNotEmpty() == true) {
                 val success = state.value?.isSuccess
                 Toast.makeText(context, "$success", Toast.LENGTH_LONG).show()
-                navController.navigate("Home_Screen"){
+
+                // Add navigation to HomeScreen after toast
+                navController.navigate("Home_Screen") {
                     popUpTo("Sign_In_Screen") { inclusive = true }
                 }
-
-
             }
         }
     }
+
     LaunchedEffect(key1 = state.value?.isError) {
         scope.launch {
             if (state.value?.isError?.isNotBlank() == true) {
@@ -241,22 +210,5 @@ fun SignInScreen(
             }
         }
     }
-    LaunchedEffect(key1 = googleSignInState.success) {
-        scope.launch {
-            if (googleSignInState.success != null) {
-                Toast.makeText(context, "Sign In Success", Toast.LENGTH_LONG).show()
-                navController.navigate("Home_Screen"){
-                    popUpTo("Sign_In_Screen") { inclusive = true }
-                }
-
-
-            }
-        }
-    }
-    Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.Center) {
-        if (googleSignInState.loading){
-            CircularProgressIndicator()
-        }
-    }
-
 }
+

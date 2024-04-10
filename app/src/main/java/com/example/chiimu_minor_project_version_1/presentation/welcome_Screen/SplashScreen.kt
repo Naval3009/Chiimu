@@ -54,7 +54,7 @@ fun SplashScreen(navController: NavHostController, context: MainActivity)
             navController.navigate("Home")
         } else {
             navController.popBackStack()
-            navController.navigate("Onboarding")/////////////////////////////////////////////////
+            navController.navigate("Onboarding_Screen")/////////////////////////////////////////////////
 
         }
     }
