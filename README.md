@@ -28,15 +28,6 @@ Chiimu enhances connectivity and collaboration within a campus by bridging the g
 **Deployment**: Heroku, Firebase
 
 
-# Chiimu–Centralized Campus Team-Up Platform
-
-Designed and developed Chiimu, a mobile application aimed at simplifying team formation and collaboration within a college campus for hackathons and projects. The platform allows students to showcase skills, form teams based on specific requirements, and stay updated with hackathon events
-
-- **Why Chiimu?**
-Chiimu enhances connectivity and collaboration within a campus by bridging the gap between skill-seekers and skill-providers, encouraging interdisciplinary teamwork and innovation.
-
-
-
 ## Contributing
 
 We welcome contributions to Chiimu! If you are interested in contributing, please fork the repository, make a new branch for your feature/bugfix, and then submit a pull request. Just make sure your changes are properly documented and tested..
